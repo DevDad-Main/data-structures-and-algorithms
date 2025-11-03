@@ -23,9 +23,18 @@ function findNemo(array) {
   }
 }
 
-findNemo(large); // O(n) => Linear Time
+// findNemo(large); // O(n) => Linear Time
 
 // findNemo(nemo); // Takes 3.8893079999999998 milliseconds - 1 Item
 // findNemo(everyone); // Takes 3.747309999999999 milliseconds -10 Items
 // findNemo(large); // Takes 6.494449000000001 milliseconds - 100 Items
 // findNemo(larger); // Takes 16.809918999999997 milliseconds - 1000 Items
+
+const boxes = [0, 1, 2, 3, 4, 5];
+
+function logFirstTwoBoxes(boxes) {
+  console.log(boxes[0]);
+  console.log(boxes[1]);
+}
+
+logFirstTwoBoxes(boxes); // O(2) => We are doing 2 operations - Constant Time, it still is flat and is a constant line regardless of the amount of operations we do.
