@@ -40,15 +40,33 @@ function findNemo(array) {
 // logFirstTwoBoxes(boxes); // O(2) => We are doing 2 operations - Constant Time, it still is flat and is a constant line regardless of the amount of operations we do.
 
 // NOTE: Loggin all pairs of an array
-const boxes = ["a", "b", "c", "d", "e", "f"];
+// const boxes = ["a", "b", "c", "d", "e", "f"];
 
 // INFO: This would be classed as horrible on our Big O chart, but it is a good example of how we can log all pairs of an array.
-function logAllPairsfArray(array) {
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array.length; j++) {
-      console.log(array[i], array[j]);
-    }
+// function logAllPairsfArray(array) {
+//   for (let i = 0; i < array.length; i++) {
+//     for (let j = 0; j < array.length; j++) {
+//       console.log(array[i], array[j]);
+//     }
+//   }
+// }
+
+// logAllPairsfArray(boxes); // O(n^2) => We are doing n^2 operations - Quadratic Time, it is a linear increase in time as the amount of operations increases.
+
+function booo(n) {
+  for (let i = 0; i < n; i++) {
+    console.log("booooooooo!");
   }
 }
 
-logAllPairsfArray(boxes); // O(n^2) => We are doing n^2 operations - Quadratic Time, it is a linear increase in time as the amount of operations increases.
+booo([1, 2, 3, 4]); // O(1) => Space complexity of 1
+
+function arrayOfHelloNTimes(n) {
+  let hiArray = [];
+  for (let i = 0; i < n; i++) {
+    hiArray[i] = "hello";
+  }
+  return hiArray;
+}
+
+console.log(arrayOfHelloNTimes(10)); // O(n) => Space complexity of n
