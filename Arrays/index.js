@@ -1,0 +1,51 @@
+// Making our Own Array Class
+
+/**
+ * class MyArray based on the Array class
+ */
+class MyArray {
+  constructor() {
+    this.length = 0;
+    this.data = {};
+  }
+
+  get(index) {
+    return this.data[index];
+  }
+  /**
+   * Push an item to the end of the array
+   * @param {any} item
+   * @returns
+   */
+  push(item) {
+    return (this.data[this.length++] = item);
+  }
+
+  pop() {
+    const lastItem = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+    return lastItem;
+  }
+
+  delete(index) {
+    const item = this.data[index];
+    this.shiftItems(index);
+  }
+
+  shiftItems(index) {
+    for (let i = index; i < this.length - 1; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    delete this.data[this.length - 1];
+    this.length--;
+  }
+}
+
+const newArray = new MyArray();
+newArray.push("hi");
+newArray.push("you");
+newArray.push("!");
+
+newArray.delete(1);
+console.log(newArray);
