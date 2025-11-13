@@ -26,12 +26,33 @@ class LinkedList {
   }
 
   append(value) {
-    // - 1. Add to the end of the list
+    // - 1. Create a new node with the values passed in.
     // - 2. Set the next value of the second to last element as this new value;
     // - 3. set Tail to the last element in the list
+    const newNode = {
+      value: value,
+      next: null,
+    };
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    return this;
   }
+
+  prepend(value) {}
 }
 
 const linkedList = new LinkedList(10);
+linkedList.append(5);
+linkedList.append(16);
+linkedList.prepend(1);
 
 console.log(linkedList);
+/* Expected Initial Output:
+
+LinkedList {
+  head: { value: 10, next: null },
+  tail: { value: 10, next: null },
+  length: 1
+}
+*/
