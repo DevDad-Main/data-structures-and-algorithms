@@ -13,6 +13,13 @@
 //   },
 // };
 
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
 class LinkedList {
   constructor(value) {
     this.head = {
@@ -26,20 +33,22 @@ class LinkedList {
   }
 
   append(value) {
-    // - 1. Create a new node with the values passed in.
-    // - 2. Set the next value of the second to last element as this new value;
-    // - 3. set Tail to the last element in the list
-    const newNode = {
-      value: value,
-      next: null,
-    };
+    const newNode = new Node(value);
+
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
     return this;
   }
 
-  prepend(value) {}
+  prepend(value) {
+    const newNode = new Node(value);
+
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    return this;
+  }
 }
 
 const linkedList = new LinkedList(10);
