@@ -60,7 +60,45 @@ class LinkedList {
     return array;
   }
 
-  insert(index, value) {}
+  insert(index, value) {
+    if (index === 0) {
+      this.prepend(value);
+      return this.printList();
+    }
+
+    //NOTE: Adding to the end of the linked list if index is greater than the length
+    if (index >= this.length) {
+      return this.append(value);
+    }
+
+    const newNode = new Node(value);
+
+    //NOTE: Traverse to the index we want but then we get the previous node so we shift our data around and insert the new node in it's place
+    const leader = this.traverseToIndex(index - 1);
+    //                       10 will be the leeader
+    // Current Output: [ 1, 10, 5, 16 ]
+    //                          ^ will be the holdingPointer as wee want to insert the node into index 2
+    const holdingPointer = leader.next;
+    leader.next = newNode;
+    newNode.next = holdingPointer;
+    this.length++;
+    return this.printList();
+
+    //Expected Output: [ 1, 10, 99, 5, 16 ]
+  }
+
+  //NOTE: we traverse the linked list to the index we want to insert the new node
+  traverseToIndex(index) {
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter !== index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+
+  remove(index) {}
 }
 
 const linkedList = new LinkedList(10);
@@ -68,8 +106,9 @@ linkedList.append(5);
 linkedList.append(16);
 linkedList.prepend(1);
 
-console.log(linkedList);
-console.log(linkedList.printList());
+// console.log(linkedList);
+
+console.log(linkedList.insert(2, 99));
 /* Expected Initial Output:
 
 LinkedList {
