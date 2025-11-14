@@ -57,7 +57,7 @@ class LinkedList {
       array.push(currentNode.value);
       currentNode = currentNode.next;
     }
-    return array;
+    return console.log(array);
   }
 
   insert(index, value) {
@@ -98,17 +98,34 @@ class LinkedList {
     return currentNode;
   }
 
-  remove(index) {}
+  /**
+   * Removes a Node from our linked list
+   * @param {number} index
+   * @returns {LinkedList}
+   */
+  remove(index) {
+    const leader = this.traverseToIndex(index - 1);
+    // NOTE: Node to delete
+    const unwantedNode = leader.next;
+    //NOTE: Then we set it to the node we want to delete's next node
+    leader.next = unwantedNode.next;
+    this.length--;
+    return this.printList();
+  }
 }
 
 const linkedList = new LinkedList(10);
 linkedList.append(5);
 linkedList.append(16);
 linkedList.prepend(1);
+linkedList.printList();
 
-// console.log(linkedList);
+linkedList.insert(2, 99);
+linkedList.insert(20, 88);
+linkedList.printList();
 
-console.log(linkedList.insert(2, 99));
+linkedList.remove(2);
+linkedList.remove(2);
 /* Expected Initial Output:
 
 LinkedList {
