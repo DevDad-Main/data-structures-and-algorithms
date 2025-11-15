@@ -1,3 +1,15 @@
+function printList(linkedList) {
+  let current = linkedList.head;
+  while (current) {
+    console.log({
+      value: current.value,
+      next: current.next ? current.next.value : null,
+      prev: current.prev ? current.prev.value : null,
+    });
+    current = current.next;
+  }
+}
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -68,9 +80,11 @@ class DoublyLinkedList {
     //                       10 will be the leeader
     // Current Output: [ 1, 10, 5, 16 ]
     //                          ^ will be the holdingPointer as wee want to insert the node into index 2
-    const holdingPointer = leader.next;
+    const follower = leader.next;
     leader.next = newNode;
-    newNode.next = holdingPointer;
+    newNode.prev = leader;
+    newNode.next = follower;
+    follower.prev = newNode;
     this.length++;
     return this.printList();
 
@@ -115,12 +129,8 @@ linkedList.append(16);
 */
 linkedList.prepend(1);
 
-let current = linkedList.head;
-while (current) {
-  console.log({
-    value: current.value,
-    next: current.next ? current.next.value : null,
-    prev: current.prev ? current.prev.value : null,
-  });
-  current = current.next;
-}
+printList(linkedList);
+
+linkedList.insert(2, 99);
+
+printList(linkedList);
