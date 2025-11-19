@@ -112,6 +112,24 @@ class LinkedList {
     this.length--;
     return this.printList();
   }
+  reverse() {
+    if (!this.head.next) {
+      return this;
+    }
+
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = null;
+  }
 }
 
 const linkedList = new LinkedList(10);
